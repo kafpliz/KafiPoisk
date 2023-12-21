@@ -1,0 +1,97 @@
+{{#each docs}}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {{>mainHead}}
+    <title>{{name}}</title>
+    <link rel="stylesheet" href="css/film-page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        body {
+            background: url({{backdrop.url}}) no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="undo-body"></div>
+    <div class="app">
+        {{>header}}
+
+        <div class="film">
+            <div class="film__poster"> <img class="film__img" src="{{poster.url}}" alt="Film poster" srcset=""></div>
+            <div class="film__short-description">
+                <div class="film__name"><span class="film__name-span">{{name}}</span></div>
+                <div class="film__description"><span class="film__description-span">{{description}}</span></div>
+            </div>
+        </div>
+        <div class="information">
+            <div class="information__item">
+                <span class="information-item-span">Тип:</span><span class="information-item-span">{{translater
+                    type}}</span>
+            </div>
+            <div class="information__item">
+                <span class="information-item-span">Дата выхода:</span><span
+                    class="information-item-span">{{year}}</span>
+            </div>
+            <div class="information__item">
+                <span class="information-item-span">Статус:</span><span class="information-item-span">{{helperStatus
+                    status}}</span>
+            </div>
+            <div class="information__item">
+                <span class="information-item-span">Оценок:</span><span
+                    class="information-item-span">{{votes.kp}}</span>
+            </div>
+            <div class="information__item">
+                <span class="information-item-span">Длительность:</span><span
+                    class="information-item-span">{{movieLength}} минут</span>
+            </div>
+        </div>
+        <div class="genres">
+            <span class="genres__span">Жанры:</span>
+            <ul class="genres__list">
+                {{genre genres}}
+            </ul>
+        </div>
+        <div class="budget">
+            <span>Бюджет:</span> <span>{{budget.value }} {{budget.currency}}</span>
+        </div>
+        <div class="release-date">
+            <span>Дата релиза: 2022 год, релиз завершён в 2023 году.</span>
+        </div>
+    <div class="persons">
+      <div class="persons__catalog">
+        {{persons persons}}
+        
+      </div>
+
+    </div>
+        <div class="facts">
+            <span class="facts__span">А вы знали что...</span>
+            <div class="slider">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        {{swiper facts}}
+
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    </div>
+
+    <script src="js/film.js">
+
+    </script>
+</body>
+
+</html>

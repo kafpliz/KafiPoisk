@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KafiPoisk</title>
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app">
+       {{>header}}
+
+    </div>
+    <div class="modal">
+        <div class="modal-login">
+            <input type="text" class="input_name" name="name" placeholder="Юз">
+            <input type="text" class="input_email" name="email" placeholder="Емаил">
+
+            <input type="text" class="input_password" name="password" placeholder="Пароль">
+            <button onclick="dataForServer()" type="submit">Отправить</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>

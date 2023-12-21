@@ -1,0 +1,267 @@
+.card-catalog {
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.card {
+    width: 24rem;
+    min-height: 38rem;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 2px white;
+    transition: all .3s linear;
+    position: relative;
+    
+}
+
+.card__poster {
+    width: 100%;
+    position: relative;
+}
+
+.card__poster-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 30px 30px 0 0;
+
+}
+
+.card__poster-kpid {
+    position: absolute;
+    top: 25px;
+    width: 75px;
+    height: 24px;
+    background: rgba(255, 166, 0, 0.39);
+    white-space: nowrap;
+    padding: 0 4px;
+    overflow: hidden;
+    color: white;
+    font-family: cursive;
+    border-radius: 0 15px 15px 0;
+    text-overflow: ellipsis;
+}
+
+.age-rating {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 6px solid red;
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    display: grid;
+    place-items: center;
+    font-family: fantasy;
+    font-size: 20px;
+}
+
+.card__main {
+    width: 100%;
+    min-height: 50px;
+    padding: 0 15px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card__film-name {
+    width: 100%;
+    height: 30px;
+    position: relative;
+}
+
+.card__name-item {
+    width: 100%;
+    height: 40px;
+    background: rgba(194, 41, 133, 70%);
+    position: absolute;
+    top: -25px;
+    border-radius: 30px 30px 15px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+
+}
+
+.card__text-name {
+    font-size: 27px;
+    color: white;
+    font-family: Nautilus;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 100%;
+    padding: 0 4px;
+}
+
+.briefly-info {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    min-height: 30px;
+}
+
+.briefly-info__item {
+    flex: 1 1;
+}
+
+.briefly-info__circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #C3C3C3;
+}
+
+.briefly-info__text {
+    color: #C3C3C3;
+    white-space: nowrap;
+}
+
+.reviews {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 30px;
+}
+
+.reviews__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1;
+}
+
+.reviews__item_green {
+    width: 100px;
+    height: 27px;
+    border-radius: 15px;
+    background: rgba(0, 255, 41, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviews__text {
+    font-family: cursive;
+    font-size: 15px;
+}
+
+.director-role {
+    width: 100%;
+    min-height: 57px;
+    display: flex;
+
+}
+
+.director-role__item {
+    flex: 1 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #C3C3C3;
+}
+
+.director-role__title {
+    font-family: Nautilus;
+}
+
+.short-description {
+    color: #C3C3C3;
+    width: 100%;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.short-text {
+    font-style: oblique;
+}
+
+/* HOVER */
+.card:hover {
+    box-shadow: 0px 0px 10px 2px #00D1FF;
+
+}
+
+.pagination {
+    width: 100%;
+    height: 168px;
+    padding: 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.pagination::-webkit-scrollbar {
+    width: 0;
+}
+
+.list-pages {
+    width: 225%;
+    height: 100%;
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 0 0 0;
+}
+
+.page {
+    width: 60px;
+    height: 60px;
+    box-shadow: 0px 0px 14px 6px whitesmoke;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    font-family: cursive;
+    transition: all .3s;
+    background: rgb(32, 31, 31);
+}
+
+
+
+.arrow-item {
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+    z-index: 1;
+    box-shadow: 0px 0px 14px 6px whitesmoke;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    font-family: cursive;
+    transition: all .3s;
+    background: rgb(32, 31, 31);
+}
+
+.vector-arrow {
+    width: 100%;
+    height: 100%;
+    fill: white;
+}
+
+.vector-arrow-prev {
+    transform: rotate(180deg);
+}
