@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>mainHead}}
+    <title>Каталог фильмов</title>
+    <link rel="stylesheet" href="css/topFilm.css">
+    <link rel="stylesheet" href="css/catalog-page.css">
+</head>
+
+<body>
+    <div class="app">
+        {{>header}}
+        <div class="filter">
+            <div class="genres">
+                <div class="genres__item"><span>Жанры:</span></div>
+                <div class="genres__catalog">
+                        {{genre}}
+                </div>
+             
+            </div>
+            
+        </div>
+        <div class="card-catalog">
+
+            {{#each docs}}
+
+            {{>miniCardFilm this}}
+
+            {{/each}}
+        </div>
+    </div>
+</body>
+
+</html>

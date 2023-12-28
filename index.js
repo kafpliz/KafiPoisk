@@ -5,6 +5,8 @@ const port = 3000
 const app = express()
 const topFilm = require('./routes/topFilm.route')
 const film = require('./routes/film.route')
+const person = require('./routes/person.route')
+const catalog = require('./routes/catalog.route')
 
 const hbs = require('hbs')
 const path = require('path')
@@ -57,3 +59,5 @@ app.use('/login', async (req, res) => {
 
 app.use('/top', topFilm)
 app.use('/film', film)
+app.use('/person', person)
+app.use('/catalog', catalog)

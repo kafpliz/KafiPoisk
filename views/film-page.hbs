@@ -3,14 +3,16 @@
 <html lang="ru">
 
 <head>
+
     {{>mainHead}}
-    <title>{{name}}</title>
+    <title>{{name}} ({{year}}г, {{enName}} )</title>
     <link rel="stylesheet" href="css/film-page.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <style>
         body {
-            background: url({{backdrop.url}}) no-repeat;
+
+            background: url({{backdrop.url}}) no-repeat top 0 left 0 /cover;
             background-attachment: fixed;
             position: relative;
         }
@@ -23,9 +25,14 @@
         {{>header}}
 
         <div class="film">
-            <div class="film__poster"> <img class="film__img" src="{{poster.url}}" alt="Film poster" srcset=""></div>
+            <div class="film__poster"> <img class="film__img" src="{{posters poster}}" alt="Film poster" srcset="">
+            </div>
             <div class="film__short-description">
-                <div class="film__name"><span class="film__name-span">{{name}}</span></div>
+                <div class="film__name">
+                    <span class="film__name-span">
+                        {{nameString name names}}
+                    </span>
+                </div>
                 <div class="film__description"><span class="film__description-span">{{description}}</span></div>
             </div>
         </div>
@@ -35,8 +42,8 @@
                     type}}</span>
             </div>
             <div class="information__item">
-                <span class="information-item-span">Дата выхода:</span><span
-                    class="information-item-span">{{year}}</span>
+                <span class="information-item-span">Дата выхода:</span><span class="information-item-span">{{year}}
+                    год</span>
             </div>
             <div class="information__item">
                 <span class="information-item-span">Статус:</span><span class="information-item-span">{{helperStatus
@@ -63,13 +70,13 @@
         <div class="release-date">
             <span>Дата релиза: 2022 год, релиз завершён в 2023 году.</span>
         </div>
-    <div class="persons">
-      <div class="persons__catalog">
-        {{persons persons}}
-        
-      </div>
+        <div class="persons">
+            <div class="persons__catalog">
+                {{persons persons}}
 
-    </div>
+            </div>
+
+        </div>
         <div class="facts">
             <span class="facts__span">А вы знали что...</span>
             <div class="slider">
@@ -85,7 +92,27 @@
 
             </div>
         </div>
-        {{/each}}
+        <div class="videos">
+            <div class="trailer">
+                {{trailer videos}}
+
+            </div>
+        </div>
+        <div class="similar-movies">
+            <div class="similar-movies__item">
+                <span class="similar-movies__span">Похожие фильмы:</span>
+            </div>
+            <div class="swiper similarMovies">
+                <div class="swiper-wrapper">
+                    {{similarMovie similarMovies}}
+
+                   
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
     </div>
     </div>
 
@@ -95,3 +122,4 @@
 </body>
 
 </html>
+{{/each}}

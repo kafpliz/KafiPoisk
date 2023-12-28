@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {{>mainHead}}
+    <link rel="stylesheet" href="css/person-page.css">
+    <title>{{name}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        {{>header}}
+        <div class="photo">
+            <img class="photo__img" src="{{photo}}" alt="Person photo" srcset="">
+        </div>
+        <div class="name">
+            <span class="name__span">{{name}}</span>
+            <span>/</span>
+            <span class="name__span">{{enName}}</span>
+        </div>
+        <div class="profession">
+            <ul class="catalog-profession">
+                <span class="catalog-profession__symbol">·</span>
+                {{proffesions profession}}
+            </ul>
+        </div>
+        <div class="information">
+            <span>Родился в городе {{birth birthPlace}}.</span>
+            <span>Возраст: {{age}} лет, {{countAward countAwards}}</span>
+        </div>
+        <div class="facts">
+            <span class="facts__span">Может вы знаете что...</span>
+            <div class="facts-swiper">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        {{fact facts}}
+                        
+                       
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+        <div class="films">
+            <span class="films__span">Фильмы в которых вы можете увидеть звезду:</span>
+            <div class="films-swiper">
+                <div class="swiper filmsSwiper">
+                    <div class="swiper-wrapper">
+                        {{film movies}}
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/person.js"></script>
+</body>
+
+</html>

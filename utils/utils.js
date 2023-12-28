@@ -12,4 +12,8 @@ function facts(type) {
     return responce;
 }
 
-module.exports = facts
+function random(min, max) {
+
+    return min + Math.random() * (max + 1 - min);
+}
+module.exports = facts, random

@@ -1,0 +1,44 @@
+.filter {
+    width: 100%;
+    padding: 20px 30px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.genres {
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.genres__catalog {
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.genres__item{
+    font-size: 30px;
+    color: white;
+    font-family: 'Await';
+}
+.genre {
+    min-width: 100px;
+    max-width: fit-content;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b1b1b1;
+    border-radius: 30px;
+    box-shadow: 0 0 10px white;
+    font-size: 20px;
+    font-family: Await;
+    padding: 0 10px;
+    cursor: pointer;
+}

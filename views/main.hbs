@@ -2,28 +2,43 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{>mainHead}}
     <title>KafiPoisk</title>
-    <link rel="stylesheet" href="css/mainStyle.css">
+
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
     <div class="app">
-       {{>header}}
-
-    </div>
-    <div class="modal">
-        <div class="modal-login">
-            <input type="text" class="input_name" name="name" placeholder="Юз">
-            <input type="text" class="input_email" name="email" placeholder="Емаил">
-
-            <input type="text" class="input_password" name="password" placeholder="Пароль">
-            <button onclick="dataForServer()" type="submit">Отправить</button>
+        {{>header}}
+        <div class="list-2023">
+            <div class="list__item"> <span class="list__item-span">Топ 10 хороших фильмов фильмов за 2023 год:</span>
+            </div>
+            <div class="swiper-list">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">Slide 1</div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                        <div class="swiper-slide">Slide 4</div>
+                        <div class="swiper-slide">Slide 5</div>
+                        <div class="swiper-slide">Slide 6</div>
+                        <div class="swiper-slide">Slide 7</div>
+                        <div class="swiper-slide">Slide 8</div>
+                        <div class="swiper-slide">Slide 9</div>
+                        <div class="swiper-slide">Slide 9</div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
         </div>
     </div>
-    
+
+
     <script src="script.js"></script>
 </body>
 
