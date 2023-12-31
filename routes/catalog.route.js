@@ -1,7 +1,7 @@
 const express = require('express')
 const { API_TOKEN } = process.env
 const hbs = require('hbs')
-const genres = require('../data/allGenre')
+const { genres, sort } = require('../data/filter-data')
 
 
 const router = express.Router()
@@ -40,7 +40,15 @@ router.get('/', async (req, res) => {
     hbs.registerHelper('genre', () => {
         let str = ''
         for (let i = 0; i < genres.length; i++) {
-            str += `<div class="genre">${genres[i]}</div>`
+            str += `<div class="genre">${genres[i].name}</div>`
+
+        }
+        return new hbs.SafeString(str)
+    })
+    hbs.registerHelper('sort', () => {
+        let str = ''
+        for (let i = 0; i < sort.length; i++) {
+            str += `<div class="sort__value" >${sort[i]}</div>`
 
         }
         return new hbs.SafeString(str)
@@ -49,5 +57,31 @@ router.get('/', async (req, res) => {
     res.render("catalog-page.hbs", requestAPI)
 })
 
+router.use('/api', async (req, res) => {
+    console.log(req.body);
+    const request = req.body;
 
+    let genres = ''
+    let sortType = ''
+    let sort = ''
+
+    if (request.genres) {
+        for (let i = 0; i < request.genres.length; i++) {
+            genres += await `&genres.name=${request.genres[i]}`
+        }
+    }
+    if (request.filters) {
+        for (let i = 0; i < request.filters.length; i++) {
+            sortType += await `&sortType=${request.sortType}`
+            sort += await `&sortField=${request.filters[i]}`
+        }
+    }
+    const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=60&&token=${API_TOKEN}&selectFields=poster&selectFields=ageRating&selectFields=id&selectFields=name&selectFields=genres&selectFields=countries&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription${genres}${sortType}${sort}&year=${request.year.from}-${request.year.to}`
+    let requestAPI = await fetch(api).then(api => api.json()).then(data => dat = data)
+
+    console.log(api);
+    console.log('------------------------------');
+    console.log(genres,sortType,sort)
+    res.render("catalog-page.hbs", requestAPI)
+})
 module.exports = router

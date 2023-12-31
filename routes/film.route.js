@@ -98,15 +98,19 @@ router.get('/', async (req, res) => {
   })
   hbs.registerHelper('trailer', (video) => {
     let videos = ''
-    let trailer = video.trailers;
-    if (trailer != 0) {
-      for (let i = 0; i < trailer.length; i++) {
-        videos += `<iframe class="trailer__iframe" src="${trailer[i].url}" title="${trailer[i].name}"   frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
-
+   
+    if(video != undefined){
+      let trailer = video.trailers;
+      if (trailer != 0) {
+        for (let i = 0; i < trailer.length; i++) {
+          videos += `<iframe class="trailer__iframe" src="${trailer[i].url}" title="${trailer[i].name}"   frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+  
+        }
+      } else {
+        videos += `Трейлер отсуствует`
       }
-    } else {
-      videos += `Трейлер отсуствует`
-    }
+    } 
+   
     return new hbs.SafeString(videos)
   })
   hbs.registerHelper('nameString', (name, names) => {

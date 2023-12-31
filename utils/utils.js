@@ -5,9 +5,9 @@ function facts(type) {
             responce = 'ФАКТ'
             break;
         case 'BLOOPER':
-            responce= "КИНОЛЯП"
-        break;
-    
+            responce = "КИНОЛЯП"
+            break;
+
     }
     return responce;
 }
