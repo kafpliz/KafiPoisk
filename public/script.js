@@ -27,7 +27,6 @@ let pagination = () => {
 }
 
 
-openFilmPage()
 
 function rederect(prop) {
     switch (prop) {
@@ -50,3 +49,20 @@ let swiper = new Swiper(".mySwiper", {
       prevEl: ".swiper-button-prev",
     },
   });
+
+let openFilmPage = () => {
+    let filmCard = document.querySelectorAll('.undeslide')
+
+    for (let i = 0; i < filmCard.length; i++) {
+        filmCard[i].addEventListener('click', async () => {
+            console.log(200);
+            let id = await filmCard[i].querySelector('.undeslide__id').innerText;
+            location = `/film?id=${id}`
+
+        })
+
+    }
+
+}
+openFilmPage()
+

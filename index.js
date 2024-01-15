@@ -7,9 +7,14 @@ const topFilm = require('./routes/topFilm.route')
 const film = require('./routes/film.route')
 const person = require('./routes/person.route')
 const catalog = require('./routes/catalog.route')
+const main = require('./routes/main.route')
+const search = require('./routes/search.route')
+
 
 const hbs = require('hbs')
 const path = require('path')
+const { API_TOKEN } = process.env
+
 
 app.set('view engine', 'hbs')
 hbs.registerPartials(path.join(__dirname, '/views/partials'))
@@ -17,9 +22,8 @@ hbs.registerPartials(path.join(__dirname, '/views/partials'))
 app.use(express.static('public'))
 
 
-app.get('/',(req, res) => {
-    res.render('main.hbs', {home: true})
-})
+app.get('/',main)
+
 
 app.use(express.json())
 
@@ -35,30 +39,11 @@ connectToDb((err) => {
 })
 
 
-/* 
-app.use('/login', async (req, res) => {
-    const {name, email, password} = req.body
-    const prop = await db.collection('users').find({name: name})
-    if(prop){
-        console.log('такое имяестьв бд');
-    } else{
-        console.log(500);
-    }
-     let users = []
-   
-        .forEach(user => { users.push(user) })
-        .then(() => { res.status(200).json(users) }) 
-        .catch((err) => {
-            res.status(500).json({error: err })
-        })    
-    console.log("-----------------------------------------------------------------");
 
-
-})
- */
 
 
 app.use('/top', topFilm)
 app.use('/film', film)
 app.use('/person', person)
 app.use('/catalog', catalog)
+app.use('/search', search)

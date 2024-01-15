@@ -170,3 +170,43 @@
     color: black;
     transform: scale(0.9);
 }
+
+.type{
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.type__span {
+    font-size: 25px;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.type-catalog {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.type__value {
+    min-width: 100px;
+    max-width: fit-content;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b1b1b1;
+    border-radius: 30px;
+    box-shadow: 0 0 10px white;
+    font-size: 20px;
+    font-family: Await;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}

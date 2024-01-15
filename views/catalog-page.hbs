@@ -5,7 +5,7 @@
     {{>mainHead}}
     <title>Каталог фильмов</title>
     <link rel="stylesheet" href="css/topFilm.css">
-    <link rel="stylesheet" href="css/catalog-page.css">
+    <link rel="stylesheet"  href="css/catalog-page.css">
 </head>
 
 <body>
@@ -39,10 +39,19 @@
                 </div>
 
             </div>
+
+            <div class="type">
+                <span class="type__span">Тип: </span>
+                <div class="type-catalog">
+                   {{type}}
+
+                </div>
+            </div>
+
             <div class="sort">
                 <span class="sort__span">Сортировать по: </span>
                 <div class="sort-catalog">
-                  {{sort}}
+                    {{sort}}
 
                 </div>
                 <div class="sort__check">
@@ -50,7 +59,7 @@
                         <input class="form-check-input" name="sort" type="radio" id="sort1" value="option1">
                         <label for="sort1">Возрастанию</label>
                     </div>
-                    <div class="sort__input-container"> 
+                    <div class="sort__input-container">
                         <input class="form-check-input" name="sort" type="radio" id="sort2" value="option1" checked>
                         <label for="sort2">Убыванию</label>
                     </div>

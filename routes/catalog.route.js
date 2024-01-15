@@ -1,7 +1,7 @@
 const express = require('express')
 const { API_TOKEN } = process.env
 const hbs = require('hbs')
-const { genres, sort } = require('../data/filter-data')
+const { genres, sort, type } = require('../data/filter-data')
 
 
 const router = express.Router()
@@ -53,35 +53,47 @@ router.get('/', async (req, res) => {
         }
         return new hbs.SafeString(str)
     })
+    hbs.registerHelper('type', () => {
+        let str = ''
+        for (let i = 0; i < type.length; i++) {
+            str += `<div class="type__value" >${type[i]}</div>`
+
+        }
+        return new hbs.SafeString(str)
+    })
 
     res.render("catalog-page.hbs", requestAPI)
 })
 
-router.use('/api', async (req, res) => {
+router.post('/api', async (req, res) => {
     console.log(req.body);
     const request = req.body;
 
     let genres = ''
     let sortType = ''
     let sort = ''
+    let type = ''
 
     if (request.genres) {
         for (let i = 0; i < request.genres.length; i++) {
-            genres += await `&genres.name=${request.genres[i]}`
+            genres +=  `&genres.name=${request.genres[i]}`
         }
     }
     if (request.filters) {
         for (let i = 0; i < request.filters.length; i++) {
-            sortType += await `&sortType=${request.sortType}`
-            sort += await `&sortField=${request.filters[i]}`
+            sortType +=  `&sortType=${request.sortType}`
+            sort +=  `&sortField=${request.filters[i]}`
         }
     }
-    const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=60&&token=${API_TOKEN}&selectFields=poster&selectFields=ageRating&selectFields=id&selectFields=name&selectFields=genres&selectFields=countries&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription${genres}${sortType}${sort}&year=${request.year.from}-${request.year.to}`
+    if (request.type) {
+        for (let i = 0; i < request.type.length; i++) {
+            type += `&type=${request.type[i]}`
+        }
+    }
+
+    const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=60&&token=${API_TOKEN}&selectFields=poster&selectFields=ageRating&selectFields=id&selectFields=name&selectFields=genres&selectFields=countries&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription&selectFields=description${genres}${sortType}${sort}&year=${request.year?.from}-${request.year?.to}${type}`
     let requestAPI = await fetch(api).then(api => api.json()).then(data => dat = data)
 
-    console.log(api);
-    console.log('------------------------------');
-    console.log(genres,sortType,sort)
-    res.render("catalog-page.hbs", requestAPI)
+    res.status(200).send(requestAPI).json()
 })
 module.exports = router

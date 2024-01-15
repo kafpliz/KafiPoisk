@@ -64,9 +64,12 @@
                 {{genre genres}}
             </ul>
         </div>
+        {{#if budget.value}}
         <div class="budget">
             <span>Бюджет:</span> <span>{{budget.value }} {{budget.currency}}</span>
         </div>
+        {{/if}}
+
         <div class="release-date">
             <span>Дата релиза: 2022 год, релиз завершён в 2023 году.</span>
         </div>
@@ -77,6 +80,7 @@
             </div>
 
         </div>
+        {{#if facts}}
         <div class="facts">
             <span class="facts__span">А вы знали что...</span>
             <div class="slider">
@@ -92,12 +96,16 @@
 
             </div>
         </div>
+        {{/if}}
+        {{#if videos.trailers}}
         <div class="videos">
             <div class="trailer">
                 {{trailer videos}}
 
             </div>
         </div>
+        {{/if}}
+        {{#if similarMovies}}
         <div class="similar-movies">
             <div class="similar-movies__item">
                 <span class="similar-movies__span">Похожие фильмы:</span>
@@ -106,12 +114,13 @@
                 <div class="swiper-wrapper">
                     {{similarMovie similarMovies}}
 
-                   
+
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
+{{/if}}
 
     </div>
     </div>

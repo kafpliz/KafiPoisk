@@ -105,7 +105,7 @@ router.get('/', async (req, res) => {
    return date
  
   })
-
+console.log(requestAPI);
 
   res.render("person-page.hbs", requestAPI)
 })

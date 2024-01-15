@@ -60,7 +60,7 @@
     background: rgb(116, 115, 115);
 }
 
-.header__item-input {
+.header__item-div {
     padding: 12px;
     outline: none;
     color: white;
@@ -71,11 +71,10 @@
     width: 240px;
     font-family: cursive;
     background: rgba(0, 0, 0, 0.24);
+    cursor: pointer;
 }
 
-.header__item-input::placeholder {
-    color: white;
-}
+
 
 .header__item_circle {
     width: 50px;
