@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
 
         let page = '';
         for (let i = 1; i <= pages; i++) {
-            page += `<li class="page" onclick="pagination()">${i}</li>`
+            page += `<li class="page">${i}</li>`
 
 
         }

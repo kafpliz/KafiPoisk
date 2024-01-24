@@ -1,18 +1,4 @@
-let dataForServer = async () => {
-    let data = {
-        name: document.querySelector(".input_name").value,
-        email: document.querySelector(".input_email").value,
-        password: document.querySelector(".input_password").value,
-    }
 
-    const post = await fetch('/login', {
-        method: "POST",
-        headers: {
-            "Content-type": 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-}
 
 let pagination = () => {
     let page = document.querySelectorAll('.page')
@@ -25,7 +11,7 @@ let pagination = () => {
 
     }
 }
-
+pagination()
 
 
 function rederect(prop) {
@@ -50,7 +36,7 @@ let swiper = new Swiper(".mySwiper", {
     },
   });
 
-let openFilmPage = () => {
+let openFilmPageMain = () => {
     let filmCard = document.querySelectorAll('.undeslide')
 
     for (let i = 0; i < filmCard.length; i++) {
@@ -64,5 +50,5 @@ let openFilmPage = () => {
     }
 
 }
-openFilmPage()
+openFilmPageMain()
 

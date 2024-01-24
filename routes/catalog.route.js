@@ -66,7 +66,6 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/api', async (req, res) => {
-    console.log(req.body);
     const request = req.body;
 
     let genres = ''

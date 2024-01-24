@@ -6,6 +6,7 @@ const hbs = require('hbs')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
+ /*   
  const request_r1 = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=9&&token=${API_TOKEN}&selectFields=poster&selectFields=id&selectFields=name&selectFields=genres&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription&selectFields=description&selectFields=backdrop&sortField=year&sortField=rating.kp&sortType=-1&sortType=-1&status=&year=2022-2023&rating.kp=8-10&type=movie`
     const request_r2 = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=9&&token=${API_TOKEN}&selectFields=poster&selectFields=id&selectFields=name&selectFields=genres&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription&selectFields=description&selectFields=backdrop&sortField=year&sortField=rating.kp&sortType=-1&sortType=-1&status=&year=2022-2023&rating.kp=8-10&type=animated-series`
     const request_r3 = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=9&&token=${API_TOKEN}&selectFields=poster&selectFields=id&selectFields=name&selectFields=genres&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription&selectFields=description&selectFields=backdrop&sortField=year&sortField=rating.kp&sortType=-1&sortType=-1&status=&year=2022-2023&rating.kp=8-10&type=anime`
@@ -22,9 +23,10 @@ router.get('/', async (req, res) => {
         r3,
         r4,
         r5,
-    }
+    } */
+
     hbs.registerHelper('list2023', (arr)=> {
-        console.log(arr.length);
+        
         let str = ''
         for (let i = 0; i < arr.length; i++) {
            str += ` <div class="swiper-slide" style="background: ${arr[i].backdrop.url != null ?  `url(${arr[i].backdrop.url}) no-repeat top 0 left 0 /cover;` : '' }">
@@ -35,7 +37,7 @@ router.get('/', async (req, res) => {
                    <div class="name__div">${arr[i].name}</div>
                    <div class="short-info__div"><span class="rating__span">${(arr[i].rating.kp).toFixed(1)} <img src="img/star.svg" alt="" srcset=""></span> <span>${arr[i].movieLength != null ? arr[i].movieLength + '  мин.':'-' }</span> <span>${arr[i].year}г.</span></div>
                    <div class="genre__div">${arr[i].genres[0].name  }</div>
-                   <div class="description__div">${arr[i].shortDescription == null ? arr[i].description : arr[i].shortDescription}</div>
+                   <div class="description__div">${arr[i].shortDescription == null ? "Не указано" : arr[i].shortDescription}</div>
                </div>
            </div>
    </div>`    
@@ -45,7 +47,7 @@ router.get('/', async (req, res) => {
 
 
     
-    res.render("main.hbs",requestAPI)
+    res.render("main.hbs",/* requestAPI */)
 })
 
 

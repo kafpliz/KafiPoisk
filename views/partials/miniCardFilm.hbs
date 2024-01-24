@@ -1,8 +1,17 @@
 {{#with .}}
 
 <div class="card">
-    <div class="card__poster"><img class="card__poster-img" src="{{poster.url}}" alt="Film poster" srcset="">
+    <div class="card__poster">
+        <img class="card__poster-img" src="{{poster.url}}" alt="Film poster" srcset="">
         <div class="card__poster-kpid">ID: <span class="card__span-id">{{id}}</span></div>
+        <div class="usermark">
+            <div class="usermark__item" title="Смотрю"><img src="./img/tv.svg"></div>
+            <div class="usermark__item" title="В планах"><img src="./img/eyes.svg" alt="" srcset="">
+            </div>
+            <div class="usermark__item" title="Посмотрел"><img src="./img/check.svg" alt="" srcset="">
+            </div>
+            <div class="usermark__item" title="Бросил"><img src="./img/cross.svg" alt="" srcset=""></div>
+        </div>
     </div>
     <div class="age-rating">
         <span>{{ageRating}}+</span>

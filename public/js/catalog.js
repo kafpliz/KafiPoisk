@@ -169,7 +169,7 @@ sendButton.addEventListener('click', async () => {
     for (let i = 0; i < data.length; i++) {
         openFilmPage()
         
-        catalog.innerHTML += `<div class="card">
+        catalog.innerHTML += `<div class="card" >
 <div class="card__poster"><img class="card__poster-img" src="${data[i].poster.url}" alt="Film poster" srcset="">
     <div class="card__poster-kpid">ID: <span class="card__span-id">${data[i].id}</span></div>
 </div>
