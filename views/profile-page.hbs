@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>mainHead}}
+    <link rel="stylesheet" href="css/profile-page.css">
+    <title>Личный кабинет</title>
+</head>
+
+<body>
+
+    <div class="app">
+        {{>header}}
+        <div class="user">
+            <div class="user__avatar"> <img class="user__img" src="{{avatar}}" alt="Film poster" srcset="">
+            </div>
+            <div class="user__short-description">
+                <div class="user__name">
+                    <span class="user__name-span">
+                        {{username}}
+                    </span>
+
+                </div>
+                <div class="user__item regData">
+                    <span> На сайте зарегистрировался {{registrationDate}}, в {{registrationTime}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="filmmarks">
+
+
+            <div class="usemark">
+                <span id="tab-watching-btn" data-tab-content-name="catalog__watching" class="usemark__span "
+                    name="watching">Закладки</span>
+                {{!-- <span id="tab-plans-btn" data-tab-content-name="catalog__plans" class="usemark__span"
+                    name="plans">В
+                    планах</span>
+                <span id="tab-looked-btn" data-tab-content-name="catalog__looked" class="usemark__span"
+                    name="looked">Просмотрено</span>
+                <span id="tab-quit-btn" data-tab-content-name="catalog__quit" class="usemark__span"
+                    name="quit">Брошено</span> --}}
+
+
+            </div>
+
+            <div class="catalog">
+                <div class="catalog__list catalog__hide catalog__hide">
+                    {{#if films}}
+                    {{#each films.docs}}
+                    <a class="card" href="/film?id={{id}}">
+                        <img src="{{poster.url}}"
+                            class="card__poster" alt="" srcset="">
+                        <span class="card__name">{{name}}</span>
+                    </a>
+                    {{/each}}
+                    {{else}}
+                    Пусто....
+                    {{/if}}
+                </div>
+                {{!-- <div class="catalog__list catalog__plans catalog__hide">
+
+                </div>
+                <div class="catalog__list catalog__looked catalog__hide">
+
+                </div>
+                <div class="catalog__list catalog__quit catalog__hide">
+
+                </div> --}}
+            </div>
+        </div>
+    </div>
+    {{!-- <div class="card">
+        <img class="card__img"
+            src="https://avatars.mds.yandex.net/get-kinopoisk-image/10812607/ba203cdf-3886-4b50-a73a-563bc177fe50/orig"
+            alt="">
+        <span class="card__name">name</span>
+    </div> --}}
+
+    <script src="js/profile-page.js"></script>
+</body>
+
+</html>

@@ -14,10 +14,12 @@ const search = require('./routes/search.route')
 const authRouter = require('./routes/authRouter')
 const posts = require('./routes/postRouter')
 const loginPage = require('./routes/login-page.router')
-
+const  profile  = require('./routes/profile.router')
 
 const hbs = require('hbs')
 const path = require('path')
+const authMiddleware = require('./middlewaree/authMiddleware')
+
 const { API_TOKEN } = process.env
 
 
@@ -38,6 +40,7 @@ app.use('/login', loginPage )
 app.use('/auth', authRouter)
 app.use('/posts', posts)
 
+app.use('/profile', profile)
 
 
 const start = async () => {

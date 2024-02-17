@@ -20,13 +20,14 @@ log.addEventListener('click', async () => {
     if (responce) {
         let forClient = await responce.json()
         localStorage.setItem('token', forClient.token)
-        if(forClient.status == 200){
+        if (forClient.status == 200) {
             alert(`${forClient.message}. ${forClient.errors ? forClient.errors.errors[0].msg : ''}`)
-            location  = '/'
-        } else{
+            document.cookie = `authToken=${forClient.token}; `;
+            location = '/'
+        } else {
             alert(`${forClient.message}. ${forClient.errors ? forClient.errors.errors[0].msg : ''}`)
         }
-       
+
         console.log(forClient);
     } else {
         alert('Не удалось войти')

@@ -17,8 +17,12 @@
     padding: 10px 30px;
     display: flex;
     gap: 15px;
+    position: relative;
 }
+.film__id{
+    display: none;
 
+}
 
 .film__short-description {
     flex: 2 1;
@@ -373,5 +377,94 @@
     font-size: 30px;
     font-family: Await;
     color: white;
+
+}
+
+
+.usermark {
+    width: 32px;
+    height: 260px;
+    background-color: rgba(102, 98, 98, 0.534);
+    position: fixed;
+    left: 0px;
+    top: 20%;
+    border-radius:  0 10px 10px 0 ;
+    transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.usermark:hover {
+    width: 64px;
+}
+
+.usermark__item {
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.usermark img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+}
+
+.usermark__item:first-child {
+    border-radius: 0 10px 0 0;
+    background: rgba(0, 255, 0, 0.6);
+
+}
+
+.usermark__item:nth-child(2) {
+    background: rgba(201, 76, 201, 0.6);
+}
+
+.usermark__item:nth-child(3) {
+    background: rgba(63, 63, 139, 0.6);
+}
+
+.usermark__item:last-child {
+    border-radius: 0 0  10px 0;
+    background: rgba(255, 0, 0, 0.6);
+
+
+}
+.video{
+    width: 100%;
+    min-height: 300px;
+    padding: 40px 30px;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.video_player{
+    width: 800px;
+    height: 500px;
+    background: black;
+}
+
+.bookmark{
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    position: absolute;
+    right: 10px;
+    top: 32px;
+    transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.bookmak__img{
+  fill: none;
+    cursor: pointer;
+}
+
+.bookmark__toggle{
+    fill: orangered;
+    transform: scale(0.9);
 
 }

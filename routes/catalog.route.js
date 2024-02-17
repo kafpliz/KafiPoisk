@@ -7,7 +7,7 @@ const { genres, sort, type } = require('../data/filter-data')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=60&&token=${API_TOKEN}&selectFields=poster&selectFields=ageRating&selectFields=id&selectFields=name&selectFields=genres&selectFields=countries&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription&sortField=year&sortField=rating.kp&sortType=-1&sortType=-1&status=&year=2020-2023&rating.kp=8-10`
+ const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=60&&token=${API_TOKEN}&selectFields=poster&selectFields=ageRating&selectFields=id&selectFields=name&selectFields=genres&selectFields=countries&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription&sortField=year&sortField=rating.kp&sortType=-1&sortType=-1&status=&year=2020-2023`
     let requestAPI = await fetch(api).then(api => api.json()).then(data => dat = data)
     hbs.registerHelper('translater', (str) => {
         let translate = ''
@@ -63,6 +63,9 @@ router.get('/', async (req, res) => {
     })
 
     res.render("catalog-page.hbs", requestAPI)
+
+
+
 })
 
 router.post('/api', async (req, res) => {
@@ -75,13 +78,13 @@ router.post('/api', async (req, res) => {
 
     if (request.genres) {
         for (let i = 0; i < request.genres.length; i++) {
-            genres +=  `&genres.name=${request.genres[i]}`
+            genres += `&genres.name=${request.genres[i]}`
         }
     }
     if (request.filters) {
         for (let i = 0; i < request.filters.length; i++) {
-            sortType +=  `&sortType=${request.sortType}`
-            sort +=  `&sortField=${request.filters[i]}`
+            sortType += `&sortType=${request.sortType}`
+            sort += `&sortField=${request.filters[i]}`
         }
     }
     if (request.type) {

@@ -54,6 +54,7 @@
     font-family: 'Courier New', Courier, monospace;
     box-shadow: 0px 0px 5px rgb(8, 196, 243);
     transition: all 0.3s linear;
+
 }
 
 .header__item-btn:hover {
@@ -125,6 +126,7 @@ cursor: pointer;
     gap: 10px;
     transition: all .3s ease-in-out;
     justify-content: center;
+    z-index: 1;
 }
 .header__modal-z{
     width: 100%;
@@ -146,7 +148,9 @@ cursor: pointer;
     border-radius: 5px;
     font-size: 12px;
 cursor: pointer;
-
+display: grid;
+place-items: center;
+text-decoration: none;
 
 }
 .header__modal-cabinet{

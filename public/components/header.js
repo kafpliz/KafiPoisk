@@ -1,12 +1,22 @@
-let search = document.querySelector('.header__item-div')
+let search = document.querySelector('.search')
 let login = document.querySelector('.header__item-btn')
 
 let cabinet = document.querySelector('.mini_cabinet')
 let cabinetAvatar = document.querySelector('.cabinet__avatar')
 let button = document.querySelector('.button')
 
+function cookie() {
+    return document.cookie.split('; ').reduce((acc, item) => {
+      const [name, value] = item.split('=')
+      acc[name] = value
+      return acc
+    }, {})
+  }
 
-!localStorage.getItem('token') ?  notData() : getData()
+
+!document.cookie.length  ?  notData() : getData()
+
+
 
 async function notData() {
     cabinetAvatar.src = `/img/user.png`
@@ -15,12 +25,13 @@ async function notData() {
 }
 
 async function getData() {
+  
     let username = document.querySelector('.header__modal-name')
     let roles = document.querySelector('.header__modal-span')
-    let request = await fetch('/auth/getuser', {
+    let request = await fetch('/auth/shortUserInfo', {
         method: 'POST',
         headers: {
-            authorization: `Bearer ${localStorage.getItem('token')}`
+            authorization: `Bearer ${cookie().authToken}`
         },
     })
 
@@ -46,16 +57,16 @@ cabinet.addEventListener('click', () => {
         localStorage.clear()
         location.reload()
     })
-    toCabinet.addEventListener('click', () => {
-        location = '/profile'
-    })   
+
 
     toLogin.addEventListener('click', () => {
         location = '/login'
     })
 
 
- 
+ search.addEventListener('click', ()=> {
+    location='/search'
+ })
   
 
 

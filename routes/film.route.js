@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   const { id } = req.query;
-  const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=1&id=${id}&token=${API_TOKEN}&selectFields=name&selectFields=status&selectFields=backdrop&selectFields=movieLength&selectFields=votes&selectFields=type&selectFields=description&selectFields=slogan&selectFields=year&selectFields=budget&selectFields=poster&selectFields=facts&selectFields=genres&selectFields=persons&selectFields=enName&selectFields=videos&selectFields=names&selectFields=similarMovies`
+  const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=1&id=${id}&token=${API_TOKEN}&selectFields=name&selectFields=status&selectFields=backdrop&selectFields=movieLength&selectFields=votes&selectFields=type&selectFields=description&selectFields=slogan&selectFields=year&selectFields=budget&selectFields=poster&selectFields=facts&selectFields=genres&selectFields=persons&selectFields=enName&selectFields=videos&selectFields=names&selectFields=similarMovies&selectFields=id&selectFields=externalId`
   let requestAPI = await fetch(api).then(api => api.json()).then(data => dat = data)
 
   hbs.registerHelper('genre', (genre) => {
@@ -98,19 +98,19 @@ router.get('/', async (req, res) => {
   })
   hbs.registerHelper('trailer', (video) => {
     let videos = ''
-   
-    if(video != undefined){
+
+    if (video != undefined) {
       let trailer = video.trailers;
       if (trailer != 0) {
         for (let i = 0; i < trailer.length; i++) {
           videos += `<iframe class="trailer__iframe" src="${trailer[i].url}" title="${trailer[i].name}"   frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
-  
+
         }
       } else {
         videos += `Трейлер отсуствует`
       }
-    } 
-   
+    }
+
     return new hbs.SafeString(videos)
   })
   hbs.registerHelper('nameString', (name, names) => {
@@ -118,7 +118,8 @@ router.get('/', async (req, res) => {
 
     return nam
   })
-  hbs.registerHelper('posters', (poster) => {
+  hbs.registerHelper('logo', (poster) => {
+
     let img = ''
     if (poster.url == null && poster.previewUrl == null) {
       img = '/img/stop.jpg'
@@ -159,7 +160,7 @@ router.get('/', async (req, res) => {
       <span class="similarMovie-id" style="display: none;">${arr[i].id}</span>
        <span>${arr[i].name}</span>
        <span>${translate}, ${arr[i].year} г</span>
-       <span>${arr[i].rating?.kp == null ? 'неизвестно':(arr[i].rating?.kp).toFixed(1)}</span>
+       <span>${arr[i].rating?.kp == null ? 'неизвестно' : (arr[i].rating?.kp).toFixed(1)}</span>
       </div>
    </div>`
     }

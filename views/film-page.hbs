@@ -25,7 +25,9 @@
         {{>header}}
 
         <div class="film">
-            <div class="film__poster"> <img class="film__img" src="{{posters poster}}" alt="Film poster" srcset="">
+            <div class="film__poster">
+                <img class="film__img" src="{{logo poster}}" alt="Film poster" srcset="">
+                <span class="film__id">{{id}}</span>
             </div>
             <div class="film__short-description">
                 <div class="film__name">
@@ -34,6 +36,12 @@
                     </span>
                 </div>
                 <div class="film__description"><span class="film__description-span">{{description}}</span></div>
+            </div>
+            <div class="bookmark">
+                <svg class="bookmak__img" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                    <path d="M352 48H160a48 48 0 00-48 48v368l144-128 144 128V96a48 48 0 00-48-48z" 
+                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                </svg>
             </div>
         </div>
         <div class="information">
@@ -105,6 +113,11 @@
             </div>
         </div>
         {{/if}}
+        <div class="video">
+            <div class="video_player"></div>
+        </div>
+
+
         {{#if similarMovies}}
         <div class="similar-movies">
             <div class="similar-movies__item">
@@ -120,13 +133,48 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
-{{/if}}
+        {{/if}}
+
 
     </div>
+    {{!-- <div class="usermark">
+        <div class="usermark__item" title="Смотрю">
+            <img class="usemark__img" name="watching" src="./img/tv.svg">
+        </div>
+        <div class="usermark__item" title="В планах">
+            <img class="usemark__img" name="plans" src="./img/eyes.svg" alt="" srcset="">
+        </div>
+        <div class="usermark__item" title="Посмотрел">
+            <img class="usemark__img " name="looked" src="./img/check.svg" alt="" srcset="">
+        </div>
+        <div class="usermark__item" title="Бросил">
+            <img class="usemark__img stop" name="quit" src="./img/cross.svg" alt="" srcset="">
+        </div>
     </div>
+    --}}
 
-    <script src="js/film.js">
+    <script src="js/film.js"></script>
+    <script src="https://kinobox.tv/kinobox.min.js"></script>
+    <script>
+        new Kinobox('.video_player', {
+            search: {
 
+                kinopoisk: {{ id }},
+            title: '{{name}}'
+             
+            },
+            'players': {
+            'Alloha': { 'enable': true, 'position': 1, 'token': '{token}' },
+            'Bazon': { 'enable': true, 'position': 2, 'token': '{token}' },
+            'Cdnmovies': { 'enable': true, 'position': 3, 'token': '{token}' },
+            'Collaps': { 'enable': true, 'position': 4, 'token': '{token}' },
+            'Hdvb': { 'enable': true, 'position': 5, 'token': '{token}' },
+            'Iframe': { 'enable': true, 'position': 6, 'token': '{token}' },
+            'Kodik': { 'enable': true, 'position': 7, 'token': '{token}' },
+            'Videocdn': { 'enable': true, 'position': 8, 'token': '{token}' },
+            'Voidboost': { 'enable': true, 'position': 9, 'token': '{token}' }
+        },
+        }).init();
     </script>
 </body>
 

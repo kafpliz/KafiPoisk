@@ -51,7 +51,7 @@ for (let i = 0; i < filter.length; i++) {
         } else {
             filters.push(filter[i].innerText)
         }
-        console.log(filters);
+
     })
 
 }
@@ -149,7 +149,9 @@ sendButton.addEventListener('click', async () => {
             to: document.querySelector('.rangeYear__container-span-to').innerText,
         }
     }
-    console.log(fromCLient);
+
+
+
     const responce = await fetch('/catalog/api', {
         method: 'POST',
         headers: {
@@ -157,18 +159,21 @@ sendButton.addEventListener('click', async () => {
         },
         body: JSON.stringify(fromCLient)
     })
-    let catalog = document.querySelector('.card-catalog')
-    catalog.innerHTML= ' '
+
+
     const filter = await responce.json()
-    if(!filter){
+
+    if (!filter) {
         catalog.innerHTML = 'Ничего не найдено'
     }
+    let catalog = document.querySelector('.card-catalog')
+    catalog.innerHTML = ' '
+
     console.log(filter);
-  
     let data = filter.docs
     for (let i = 0; i < data.length; i++) {
-        openFilmPage()
-        
+
+
         catalog.innerHTML += `<div class="card" >
 <div class="card__poster"><img class="card__poster-img" src="${data[i].poster.url}" alt="Film poster" srcset="">
     <div class="card__poster-kpid">ID: <span class="card__span-id">${data[i].id}</span></div>
@@ -184,8 +189,8 @@ sendButton.addEventListener('click', async () => {
         <div class="briefly-info__item"><span class="briefly-info__text">${data[i].genres[0].name}</span></div>
         <div class="briefly-info__item"><span class="briefly-info__text">${data[i].countries[0].name}</span></div>
         <div class="briefly-info__item"><span class="briefly-info__text">${data[i].year}г</span></div>
-        <div class="briefly-info__item"><span class="briefly-info__text">${data[i].movieLength != null?data[i].movieLength+ ' м.' : '-' }</span></div>
-        <div class="briefly-info__item"><span class="briefly-info__text">${ translater(data[i].type)}</span></div>
+        <div class="briefly-info__item"><span class="briefly-info__text">${data[i].movieLength != null ? data[i].movieLength + ' м.' : '-'}</span></div>
+        <div class="briefly-info__item"><span class="briefly-info__text">${translater(data[i].type)}</span></div>
     </div>
     <div class="reviews">
         <div class="reviews__item">
@@ -199,8 +204,8 @@ sendButton.addEventListener('click', async () => {
         <span class="short-text">${data[i].shortDescription != null ? data[i].shortDescription : data[i].description}</span>
     </div>
 </div>
-</div>
-        `
+</div>`
+
     }
-   
+    openFilmPage()
 })

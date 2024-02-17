@@ -1,4 +1,4 @@
-let input = document.querySelector('.search')
+let input = document.querySelector('.search-input')
 let btn = document.querySelector('.btn')
 
 
@@ -32,6 +32,7 @@ btn.addEventListener('click', async () => {
     let fromCLient = {
         param: input.value
     }
+
     const responce = await fetch('/search/api', {
         method: 'POST',
         headers: {
@@ -39,6 +40,7 @@ btn.addEventListener('click', async () => {
         },
         body: JSON.stringify(fromCLient)
     })
+
     const render = await responce.json()
     if (render) {
         
@@ -47,7 +49,7 @@ btn.addEventListener('click', async () => {
         let data = render.docs
         for (let i = 0; i < data.length; i++) {
 
-            document.querySelector('.card-catalog').innerHTML += `<div class="card"  oneclick=""openFilmPage()>
+            document.querySelector('.card-catalog').innerHTML += `<a href="/film?id=${data[i].id}" class="card"  >
     <div class="card__poster"><img class="card__poster-img" src="${data[i].poster.url}" alt="Film poster" srcset="">
     <div class="card__poster-kpid">ID: <span class="card__span-id">${data[i].id}</span></div>
     </div>
@@ -77,7 +79,7 @@ btn.addEventListener('click', async () => {
         <span class="short-text">${data[i].shortDescription != null ? data[i].shortDescription : data[i].description}</span>
     </div>
     </div>
-    </div>
+    </a>
         `
         }
         openFilmPage()

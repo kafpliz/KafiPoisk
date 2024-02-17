@@ -1,0 +1,42 @@
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .video {
+        width: 800px;
+        height: 500px;
+    }
+</style>
+
+
+<div class="video">
+    <div class="kinobox_player"></div>
+</div>
+<script src="https://kinobox.tv/kinobox.min.js"></script>
+<script>
+    new Kinobox('.kinobox_player', {
+        search: {
+            kinopoisk: '397667',
+        },
+        menu: {
+            default: 'menuList',
+            mobile: 'menuButton',
+            format: '{N}) {T} ({Q})',
+            open: true
+        },
+        'players': {
+            'Alloha': { 'enable': true, 'position': 1, 'token': '{token}' },
+            'Bazon': { 'enable': true, 'position': 3, 'token': '{token}' },
+            'Cdnmovies': { 'enable': true, 'position': 4, 'token': '{token}' },
+            'Collaps': { 'enable': true, 'position': 5, 'token': '{token}' },
+            'Hdvb': { 'enable': true, 'position': 6, 'token': '{token}' },
+            'Iframe': { 'enable': true, 'position': 7, 'token': '{token}' },
+            'Kodik': { 'enable': true, 'position': 8, 'token': '{token}' },
+            'Videocdn': { 'enable': true, 'position': 9, 'token': '{token}' },
+            'Voidboost': { 'enable': true, 'position': 10, 'token': '{token}' }
+        },
+    }).init();
+</script>
