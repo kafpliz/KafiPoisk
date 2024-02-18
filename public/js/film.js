@@ -61,7 +61,7 @@ window.addEventListener('load', async() => {
     method: 'POST',
   })
   let responce = await request.json()
-  let ind = responce.indexOf(document.querySelector('.film__id').innerText)
+  let ind = await responce.indexOf(document.querySelector('.film__id').innerText)
 
   if(ind !=- 1){
     bookmark.classList.toggle('bookmark__toggle')
