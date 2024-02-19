@@ -4,56 +4,57 @@
 <head>
     {{>mainHead}}
     <title>Каталог фильмов</title>
-    <link rel="stylesheet" href="css/topFilm.css">
-    <link rel="stylesheet"  href="css/catalog-page.css">
+    <link rel="stylesheet" href="css/catalog-page.css">
+    <link rel="stylesheet" href="components/film-card.css">
 </head>
 
 <body>
     <div class="app">
         {{>header}}
         <div class="filter">
-            <div class="genres">
+            {{!-- <div class="genres">
                 <div class="genres__item"><span>Жанры:</span></div>
                 <div class="genres__catalog">
                     {{genre}}
                 </div>
 
-            </div>
-            <div class="rangeYear">
-                <span class="rangeYear__span">Диапазон выпуска</span>
+            </div> --}}
+                       {{!--      <div class="rangeYear">
+                    <span class="rangeYear__span">Диапазон выпуска</span>
 
-                <div class="rangeYear__container">
-                    <div class="rangeYear__item">
-                        <span class="rangeYear__container-span ">С <span
-                                class="rangeYear__container-span-from">2020</span> года</span>
-                        <input class="rangeYear__container-input rangeYear__container-input-from" type="range" name=""
-                            max="23" value="20">
+                    <div class="rangeYear__container">
+                        <div class="rangeYear__item">
+                            <span class="rangeYear__container-span ">С <span
+                                    class="rangeYear__container-span-from">2020</span> года</span>
+                            <input class="rangeYear__container-input rangeYear__container-input-from" type="range"
+                                name="" max="23" value="20">
+                        </div>
+                        <div class="rangeYear__item">
+                            <span class="rangeYear__container-span ">По <span
+                                    class="rangeYear__container-span-to">2023</span> год</span>
+                            <input class="rangeYear__container-input rangeYear__container-input-to" type="range" name=""
+                                max="23" value="23">
+                        </div>
+
                     </div>
-                    <div class="rangeYear__item">
-                        <span class="rangeYear__container-span ">По <span
-                                class="rangeYear__container-span-to">2023</span> год</span>
-                        <input class="rangeYear__container-input rangeYear__container-input-to" type="range" name=""
-                            max="23" value="23">
-                    </div>
 
-                </div>
-
-            </div>
-
-            <div class="type">
-                <span class="type__span">Тип: </span>
-                <div class="type-catalog">
-                   {{type}}
-
-                </div>
-            </div>
-
+                </div> --}}
+                
             <div class="sort">
                 <span class="sort__span">Сортировать по: </span>
                 <div class="sort-catalog">
                     {{sort}}
 
                 </div>
+                <div class="type">
+                    <span class="type__span">Тип: </span>
+                    <div class="type-catalog">
+                        {{type}}
+
+                    </div>
+                </div>
+
+
                 <div class="sort__check">
                     <div class="sort__input-container">
                         <input class="form-check-input" name="sort" type="radio" id="sort1" value="option1">
@@ -75,7 +76,7 @@
 
             {{#each docs}}
 
-            {{>miniCardFilm this}}
+            {{>filmCard this}}
 
             {{/each}}
         </div>

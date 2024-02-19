@@ -19,10 +19,11 @@ log.addEventListener('click', async () => {
     })
     if (responce) {
         let forClient = await responce.json()
-        localStorage.setItem('token', forClient.token)
+
         if (forClient.status == 200) {
             alert(`${forClient.message}. ${forClient.errors ? forClient.errors.errors[0].msg : ''}`)
             document.cookie = `authToken=${forClient.token}; `;
+            localStorage.setItem('token', forClient.token)
             location = '/'
         } else {
             alert(`${forClient.message}. ${forClient.errors ? forClient.errors.errors[0].msg : ''}`)

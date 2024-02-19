@@ -62,7 +62,7 @@ window.addEventListener('load', async() => {
   })
   let responce = await request.json()
   let ind = await responce.indexOf(document.querySelector('.film__id').innerText)
-/* f */
+
   if(ind !=- 1){
     bookmark.classList.toggle('bookmark__toggle')
   }

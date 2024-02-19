@@ -14,7 +14,7 @@ function cookie() {
   }
 
 
-!document.cookie.length  ?  notData() : getData()
+  (cookie().authToken).length == 0  ?  notData() : getData()
 
 
 
@@ -54,8 +54,9 @@ cabinet.addEventListener('click', () => {
 
 
     btnLeave.addEventListener('click', () => {
+        document.cookie = "authToken=;expires=-1";
         localStorage.clear()
-        location.reload()
+        location='/'
     })
 
 

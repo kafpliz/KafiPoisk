@@ -210,3 +210,13 @@
     cursor: pointer;
     transition: 0.2s;
 }
+
+.card-catalog{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    min-height: 140px;
+    justify-content: center;
+    padding: 20px 30px;
+}

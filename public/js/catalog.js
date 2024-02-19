@@ -4,19 +4,6 @@ let spanTo = document.querySelector('.rangeYear__container-span-to')
 let rangeTo = document.querySelector('.rangeYear__container-input-to')
 
 
-rangeFrom.addEventListener('mouseup', () => {
-    let year = ((rangeFrom.value / 100) * 100).toFixed(0)
-
-    return spanFrom.innerText = year > 9 ? '20' + year : '200' + year
-
-})
-rangeTo.addEventListener('mouseup', () => {
-    let year = ((rangeTo.value / 100) * 100).toFixed(0)
-
-    return spanTo.innerText = year > 9 ? ' 20' + year : '200' + year
-
-})
-
 let genre = document.querySelectorAll('.genre')
 let filter = document.querySelectorAll('.sort__value')
 let type = document.querySelectorAll('.type__value')
@@ -28,7 +15,7 @@ let genres = []
 let filters = []
 let types = []
 
-
+/* 
 for (let i = 0; i < genre.length; i++) {
     genre[i].addEventListener('click', () => {
         genre[i].classList.toggle('genre__active')
@@ -41,7 +28,7 @@ for (let i = 0; i < genre.length; i++) {
 
     })
 
-}
+} */
 for (let i = 0; i < filter.length; i++) {
     filter[i].addEventListener('click', () => {
         filter[i].classList.toggle('genre__active')
@@ -144,10 +131,6 @@ sendButton.addEventListener('click', async () => {
         genres: genres,
         filters: sort,
         type: typeList,
-        year: {
-            from: document.querySelector('.rangeYear__container-span-from').innerText,
-            to: document.querySelector('.rangeYear__container-span-to').innerText,
-        }
     }
 
 
@@ -174,38 +157,11 @@ sendButton.addEventListener('click', async () => {
     for (let i = 0; i < data.length; i++) {
 
 
-        catalog.innerHTML += `<div class="card" >
-<div class="card__poster"><img class="card__poster-img" src="${data[i].poster.url}" alt="Film poster" srcset="">
-    <div class="card__poster-kpid">ID: <span class="card__span-id">${data[i].id}</span></div>
-</div>
-<div class="age-rating">
-    <span>${data[i].ageRating != null ? data[i].ageRating : '0'}+</span>
-</div>
-<div class="card__main">
-    <div class="card__film-name">
-        <div class="card__name-item"><span class="card__text-name">${data[i].name}</span></div>
-    </div>
-    <div class="briefly-info">
-        <div class="briefly-info__item"><span class="briefly-info__text">${data[i].genres[0].name}</span></div>
-        <div class="briefly-info__item"><span class="briefly-info__text">${data[i].countries[0].name}</span></div>
-        <div class="briefly-info__item"><span class="briefly-info__text">${data[i].year}г</span></div>
-        <div class="briefly-info__item"><span class="briefly-info__text">${data[i].movieLength != null ? data[i].movieLength + ' м.' : '-'}</span></div>
-        <div class="briefly-info__item"><span class="briefly-info__text">${translater(data[i].type)}</span></div>
-    </div>
-    <div class="reviews">
-        <div class="reviews__item">
-            <div class="reviews__item_green"><span class="reviews__text">KP: ${(data[i].rating.kp).toFixed(1)} </span></div>
-        </div>
-        <div class="reviews__item">
-            <div class="reviews__item_green"><span class="reviews__text">imdb: ${(data[i].rating.imdb).toFixed(1)}</span></div>
-        </div>
-    </div>
-    <div class="short-description">
-        <span class="short-text">${data[i].shortDescription != null ? data[i].shortDescription : data[i].description}</span>
-    </div>
-</div>
-</div>`
+        catalog.innerHTML += `<a class="card" href="/film?id=${data[i].id}">
+        <div class="ageRating">${data[i].ageRating?data[i].ageRating: '0' }+</div>
+            <img src="${data[i].poster.url}" class="card__poster" alt="" srcset="">
+            <span class="card__name">${data[i].name}</span>
+        </a>`
 
     }
-    openFilmPage()
 })
