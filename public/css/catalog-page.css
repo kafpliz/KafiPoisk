@@ -220,3 +220,34 @@
     justify-content: center;
     padding: 20px 30px;
 }
+
+.footer{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+}
+.footer__item{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #342f2f;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: fantasy;
+    cursor: pointer;
+}
+.footer__item-img{
+    font-size: 25px;
+    transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+}
+.footer__item-img:hover{
+    transform: scale(0.9);
+}

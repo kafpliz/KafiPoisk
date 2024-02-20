@@ -29,6 +29,7 @@ for (let i = 0; i < genre.length; i++) {
     })
 
 } */
+
 for (let i = 0; i < filter.length; i++) {
     filter[i].addEventListener('click', () => {
         filter[i].classList.toggle('genre__active')
@@ -83,24 +84,24 @@ function translater(str) {
 
 
 sendButton.addEventListener('click', async () => {
-    let sort = []
-    let typeList = []
+    let sort = ''
+    let typeList = ''
     for (let i = 0; i < filters.length; i++) {
         switch (filters[i]) {
             case 'рейтингу':
-                sort.push('rating.kp')
+                sort +='&filters=rating.kp'
                 break;
             case 'возрастному ограничению':
-                sort.push('ageRating')
+                sort +='&filters=ageRating'
                 break;
             case 'году':
-                sort.push('year')
+                sort +='&filters=year'
                 break;
             case 'названию':
-                sort.push('name')
+                sort +='&filters=name'
                 break;
             case 'id':
-                sort.push('id')
+                sort +='&filters=id'
                 break;
         }
 
@@ -108,60 +109,25 @@ sendButton.addEventListener('click', async () => {
     for (let i = 0; i < types.length; i++) {
         switch (types[i]) {
             case 'мультсериал':
-                typeList.push('animated-series')
+                typeList += '&type=animated-series'
                 break;
             case 'аниме':
-                typeList.push('anime')
+                typeList += '&type=anime'
                 break;
             case 'мультфильм':
-                typeList.push('cartoon')
+                typeList += '&type=cartoon'
                 break;
             case 'фильм':
-                typeList.push('movie')
+                typeList += '&type=movie'
                 break;
             case 'сериал':
-                typeList.push('tv-series')
+                typeList += '&type=tv-series'
                 break;
         }
 
     }
 
-    let fromCLient = {
-        sortType: radio[0].checked ? 1 : -1,
-        genres: genres,
-        filters: sort,
-        type: typeList,
-    }
 
-
-
-    const responce = await fetch('/catalog/api', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(fromCLient)
-    })
-
-
-    const filter = await responce.json()
-
-    if (!filter) {
-        catalog.innerHTML = 'Ничего не найдено'
-    }
-    let catalog = document.querySelector('.card-catalog')
-    catalog.innerHTML = ' '
-
-    console.log(filter);
-    let data = filter.docs
-    for (let i = 0; i < data.length; i++) {
-
-
-        catalog.innerHTML += `<a class="card" href="/film?id=${data[i].id}">
-        <div class="ageRating">${data[i].ageRating?data[i].ageRating: '0' }+</div>
-            <img src="${data[i].poster.url}" class="card__poster" alt="" srcset="">
-            <span class="card__name">${data[i].name}</span>
-        </a>`
-
-    }
+    location =`?sortType=${radio[0].checked ? 1 : -1}${typeList}${sort}`
+   
 })

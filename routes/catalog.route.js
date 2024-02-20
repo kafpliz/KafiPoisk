@@ -7,8 +7,9 @@ const { genres, sort, type } = require('../data/filter-data')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
- const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=60&&token=${API_TOKEN}&selectFields=poster&selectFields=ageRating&selectFields=id&selectFields=name&selectFields=names`
-    let requestAPI = await fetch(api).then(api => api.json()).then(data => dat = data)
+    let sorting = req.query;
+    let page = 1;
+
     hbs.registerHelper('translater', (str) => {
         let translate = ''
         switch (str) {
@@ -61,37 +62,46 @@ router.get('/', async (req, res) => {
         }
         return new hbs.SafeString(str)
     })
+    const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=25&&token=${API_TOKEN}&selectFields=poster&selectFields=ageRating&selectFields=id&selectFields=name&selectFields=names`
 
-    res.render("catalog-page.hbs", requestAPI)
+
+    if (Object.keys(sorting).length == 0) {
+        console.log(200);
+
+        let requestAPI = await fetch(api).then(api => api.json()).then(data => dat = data)
+        res.render("catalog-page.hbs", requestAPI)
+    } else {
+     
+        let sortType = ''; let sort = '';let type = '';
+
+        if(typeof sorting.type == 'string' && typeof sorting.filters == 'string'){
+            sortType = `&sortType=${sorting.sortType}`
+            sort =`&sortField=${sorting.filters}`
+            type = `&type=${sorting.type}`
+        } else{
+
+            for (let i = 0; i < sorting.filters.length; i++) {
+                sortType += `&sortType=${sorting.sortType}`
+                sort += `&sortField=${sorting.filters[i]}`
+            }
+            for (let i = 0; i < sorting.type.length; i++) {
+                type += `&type=${sorting.type[i]}`
+            }
+        }
+      
+
+        const api = `https://api.kinopoisk.dev/v1.4/movie?page=${page}&limit=25&&token=${API_TOKEN}&selectFields=poster&selectFields=ageRating&selectFields=id&selectFields=name&selectFields=genres&selectFields=countries&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription&selectFields=description${sortType}${sort}${type}`
+    
+        let sortingAPI = await fetch(api).then(api => api.json()).then(data => dat = data)
+
+        res.render("catalog-page.hbs", sortingAPI)
+    }
+
+
 
 
 
 })
 
-router.post('/api', async (req, res) => {
-    const request = req.body;
 
-
-    let sortType = ''
-    let sort = ''
-    let type = ''
-
-
-    if (request.filters) {
-        for (let i = 0; i < request.filters.length; i++) {
-            sortType += `&sortType=${request.sortType}`
-            sort += `&sortField=${request.filters[i]}`
-        }
-    }
-    if (request.type) {
-        for (let i = 0; i < request.type.length; i++) {
-            type += `&type=${request.type[i]}`
-        }
-    }
-
-    const api = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=60&&token=${API_TOKEN}&selectFields=poster&selectFields=ageRating&selectFields=id&selectFields=name&selectFields=genres&selectFields=countries&selectFields=year&selectFields=movieLength&selectFields=type&selectFields=rating&selectFields=shortDescription&selectFields=description${sortType}${sort}${type}`
-    let requestAPI = await fetch(api).then(api => api.json()).then(data => dat = data)
-
-    res.status(200).send(requestAPI).json()
-})
 module.exports = router

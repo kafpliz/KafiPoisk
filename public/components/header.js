@@ -14,7 +14,7 @@ function cookie() {
   }
 
 
-  (cookie().authToken).length == 0  ?  notData() : getData()
+  !localStorage.getItem('token')  ?  notData() : getData()
 
 
 
