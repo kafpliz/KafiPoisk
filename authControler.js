@@ -8,7 +8,7 @@ const { mongoose } = require('mongoose')
 const cookie = require('./utils/cookie.js')
 const ObjectId = require('mongodb').ObjectId
 let data = new Date()
-let date = `${data.getDate()} ${data.getMonth() < 10 ? "0" + (data.getMonth() + 1) : data.getMonth()} ${data.getFullYear()}`;
+let date = `${data.getDate()}-${data.getMonth() < 10 ? "0" + (data.getMonth() + 1) : data.getMonth()}-${data.getFullYear()}`;
 let time = `${data.getHours() < 10 ? '0' + (data.getHours()) : data.getHours()}:${data.getHours() < 10 ? '0' + (data.getMinutes()) : data.getMinutes()}`
 
 const generateAccessToken = (id, roles, username) => {
@@ -113,8 +113,6 @@ class authController {
         await user.save()
 
         res.json({ message: 'Успещно добавлено', status: 200 })
-        console.log(body);
-        console.log(user);
 
     }
     async getBookmarkInfo(req, res) {

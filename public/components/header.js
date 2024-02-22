@@ -13,8 +13,7 @@ function cookie() {
     }, {})
   }
 
-
-  !localStorage.getItem('token')  ?  notData() : getData()
+!localStorage.getItem('token')?  notData() : getData()
 
 
 

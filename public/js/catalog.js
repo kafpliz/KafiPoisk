@@ -81,7 +81,7 @@ function translater(str) {
     }
     return translate
 }
-
+let str = ''
 
 sendButton.addEventListener('click', async () => {
     let sort = ''
@@ -128,6 +128,23 @@ sendButton.addEventListener('click', async () => {
     }
 
 
-    location =`?sortType=${radio[0].checked ? 1 : -1}${typeList}${sort}`
+    location +=`?sortType=${radio[0].checked ? 1 : -1}${typeList}${sort}&page=1`
+    str +=`&sortType=${radio[0].checked ? 1 : -1}${typeList}${sort}&page=1`
    
 })
+
+let foot = document.querySelector('.footer')
+let page = new URL(document.location).searchParams.get('page') ?new URL(document.location).searchParams.get('page') : 1 ;
+
+
+
+let prev = `<a href="?page=${page > 1 ? page - 10 : ''}" class="footer__item footer__item-prev"><ion-icon class="footer__item-img" name="arrow-back"></ion-icon></a>`
+let next = `<a href="?page=${page==1 ? page*10+1 : Number(page) + 10}" class="footer__item footer__item-next"><ion-icon class="footer__item-img" name="arrow-forward"></ion-icon></a>`
+
+let pages = ''
+for (let i = 1; i <=  10; i++) {
+    pages += `<a href="?page=${page != 1 ? (Number(page) - 1) + i : i}" class="footer__item">${page != 1 ? (Number(page) - 1) + i : i}</a>`
+}
+
+
+foot.innerHTML = prev + pages + next

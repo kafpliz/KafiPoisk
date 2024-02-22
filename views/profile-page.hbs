@@ -46,13 +46,11 @@
             <div class="catalog">
                 <div class="catalog__list catalog__hide catalog__hide">
                     {{#if films}}
+
                     {{#each films.docs}}
-                    <a class="card" href="/film?id={{id}}">
-                        <img src="{{poster.url}}"
-                            class="card__poster" alt="" srcset="">
-                        <span class="card__name">{{name}}</span>
-                    </a>
+                         {{>filmCard this}}
                     {{/each}}
+
                     {{else}}
                     Пусто....
                     {{/if}}
@@ -69,12 +67,7 @@
             </div>
         </div>
     </div>
-    {{!-- <div class="card">
-        <img class="card__img"
-            src="https://avatars.mds.yandex.net/get-kinopoisk-image/10812607/ba203cdf-3886-4b50-a73a-563bc177fe50/orig"
-            alt="">
-        <span class="card__name">name</span>
-    </div> --}}
+
 
     <script src="js/profile-page.js"></script>
 </body>

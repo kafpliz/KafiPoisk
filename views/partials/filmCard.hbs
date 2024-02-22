@@ -2,7 +2,14 @@
 
 
 <a class="card" href="/film?id={{id}}">
-<div class="ageRating">{{ageRating}}+</div>
+<div class="ageRating">{{#if ageRating}}
+          {{ageRating}}+
+         {{else}}
+            0+
+        {{/if}}
+       
+    </div>
+<div class="rating">KP: {{rating rating.kp}}</div>
     <img src="{{poster.url}}" class="card__poster" alt="" srcset="">
     <span class="card__name">{{name}}</span>
 </a>

@@ -1,30 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagination Example</title>
 <style>
-    .card {
-        width: 210px;
-        min-height: 315px;
+    .pagination {
         display: flex;
-        flex-direction: column;
+        list-style: none;
+        padding: 0;
     }
-    .card__poster{
-        width: 100%;
-        aspect-ratio: 2/3;
+    .page-item {
+        margin-right: 5px;
     }
-    .card__name{
-        text-align: center;
-        color: whit;
+    .page-link {
         text-decoration: none;
-        width: 100%;
-
+        padding: 5px 10px;
+        background-color: lightblue;
+        color: black;
     }
 </style>
+</head>
+<body>
+<div id="data"></div>
+<ul id="pagination" class="pagination"></ul>
 
-<a class="card" href="">
-    <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/10835644/9532074a-ecad-459a-b02c-77dc9abf1b34/orig"
-        class="card__poster" alt="" srcset="">
-    <span class="card__name">Искрящийся арбdddddddddddddddddddddddddddddddddddddddуз</span>
-</a>
-
-
-
-
-<script src=".js"></script>
+<script>// Создаем новый URLSearchParams объект, передавая в него текущий URL
+window.addEventListener('load', ()=> {
+   
+})
+</script>
+</body>
+</html>
